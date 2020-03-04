@@ -1,0 +1,70 @@
+
+::placeholder {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #999999;
+
+}
+
+.title {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 72px;
+    line-height: 79px;
+    color: #373A3C;
+    margin-top: 100px;
+    margin-left: 164px;
+}
+
+.fibonacci-text {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+    color: #373A3C;
+    margin-top: 57px;
+    margin-left: 169px;
+}
+
+.input-bar {
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-left: 13px;
+    width: 86px;
+    height: 38px;
+}
+
+.my-button {
+    background: #0275D8;
+    border: 1px solid #0275D8;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 13px;
+    width: 39px;
+    height: 38px;
+}
+
+.result {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    color: #373A3C;
+    margin-left: 13px;
+}
