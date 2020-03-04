@@ -4,13 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <style>
+        ::placeholder {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            color: #999999;
+
+        }
+
+        .title {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 72px;
+            line-height: 79px;
+            color: #373A3C;
+            margin-top: 100px;
+            margin-left: 164px;
+        }
+
+        .fibonacci-text {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 24px;
+            color: #373A3C;
+            margin-top: 57px;
+            margin-left: 169px;
+        }
+
+        .input-bar {
+            background: #FFFFFF;
+            border: 1px solid #CCCCCC;
+            box-sizing: border-box;
+            border-radius: 4px;
+            margin-left: 13px;
+            width: 86px;
+            height: 38px;
+        }
+
+        .my-button {
+            background: #0275D8;
+            border: 1px solid #0275D8;
+            box-sizing: border-box;
+            border-radius: 4px;
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 21px;
+            text-align: center;
+            color: #FFFFFF;
+            margin-left: 13px;
+            width: 39px;
+            height: 38px;
+        }
+
+        .result {
+            font-family: Open Sans;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-decoration-line: underline;
+            color: #373A3C;
+            margin-left: 13px;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>
-        The Fibonacci number of <span id="x">X</span> is <span id="y">Y</span>
-    </h1>
+    <div>
+        <h1 class="title">
+            Fibonacci calculator
+        </h1>
+    </div>
+    <div>
+        <span class="fibonacci-text">
+            The Fibonacci number of
+        </span>
+        <input type="text" placeholder="#" id="myInput" class="input-bar">
+        <button type="button" onclick="getInputValue();" class="my-button">is</button>
+        <span id="result" class="result"></span>
+    </div>
+
     <script src="js/fibonacci.js"></script>
 
 </body>
