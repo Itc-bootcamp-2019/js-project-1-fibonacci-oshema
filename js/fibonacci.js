@@ -1,14 +1,15 @@
 
-function getInputValue() {
+async function getInputValue() {
     var inputVal = document.getElementById("myInput").value;
-
-    function fibonacci(x) {
-        if (x <= 1) {
-            return x;
-        }
-        else {
-            return fibonacci(x - 1) + fibonacci(x - 2);
-        }
-    }
-    document.getElementById("result").innerText = fibonacci(inputVal);
+    const url = 'http://localhost:5050/fibonacci/:number';
+    userIn = url.replace(":number", inputVal);
+    console.log(userIn);
+    let serverResult;
+    await fetch(userIn)
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data);
+            serverResult = data.result;
+        });
+    document.getElementById("result").innerText = serverResult;
 }
