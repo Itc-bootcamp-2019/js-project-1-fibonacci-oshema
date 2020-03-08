@@ -68,3 +68,21 @@
     color: #373A3C;
     margin-left: 13px;
 }
+.spinner {
+    position: absolute;
+    top: 190px;
+}
+.alert {
+    width: 210px;
+    margin-left: 341px;
+    margin-top: 8px;  
+}
+.class42 {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #D9534F;
+    margin-left: 8px;
+}

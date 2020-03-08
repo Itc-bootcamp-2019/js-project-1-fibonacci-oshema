@@ -30,8 +30,13 @@
             The Fibonacci number of
         </span>
         <input type="text" placeholder="#" id="myInput" class="input-bar">
-        <button type="button" onclick="getInputValue();" class="my-button">is</button>
+        <button type="button" onclick="getFibonacci();" class="my-button">is</button>
         <span id="result" class="result"></span>
+        <div id="mySpinner" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div id="alertOnError"></div>
+
     </div>
     <script src="js/fibonacci.js"></script>
 
