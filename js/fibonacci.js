@@ -31,40 +31,35 @@ function getFibonacci() {
 
 
 async function getServerResult(x) {
-    await fetch(x).then(resp => {
-        if (resp.ok) {
-            resp.json().then((data) => {
-                console.log(data);
-                console.log(data.result);
-                serverResult = data.result;
-                document.getElementById("result").innerText = serverResult;
-            });
-        } else {
-            resp.text()
-                .then((data) => {
-                    document.getElementById('result').className = 'class42';
-                    document.getElementById("result").innerText = 'Server Error: ' + data;
-                })
-        }
-    })
+    let resp = await fetch(x);
+    if (resp.ok) {
+        data = await resp.json();
+        console.log(data);
+        console.log(data.result);
+        serverResult = data.result;
+        document.getElementById("result").innerText = serverResult;
+    } else {
+        data = await resp.text();
+        document.getElementById('result').className = 'class42';
+        document.getElementById("result").innerText = 'Server Error: ' + data;
+    }
+
     removeSpinner('mySpinner');
 }
-function resultsHistory(y) {
+async function resultsHistory(y) {
     document.getElementById('resultHistory').innerHTML = "";
     document.getElementById("resultH").innerText = "Results ";
     startSpinner('spinnerResults');
-    fetch(y)
-        .then((resp) => resp.json())
-        .then((data) => {
-            console.log(data.results);
-            removeSpinner('spinnerResults');
-            for (let i of data.results) {
-                theNumber = i.number;
-                theResult = i.result;
-                theDate = Date(i.createdDate);
-                document.getElementById('resultHistory').innerHTML += `<br/><li>The Fibonnaci of ${theNumber} is ${theResult}. Calculated at: ${theDate} </li><hr>`;
-            }
-        });
+    resp = await fetch(y)
+    data = await resp.json();
+    console.log(data.results);
+    removeSpinner('spinnerResults');
+    for (let i of data.results) {
+        theNumber = i.number;
+        theResult = i.result;
+        theDate = Date(i.createdDate);
+        document.getElementById('resultHistory').innerHTML += `<br/><li>The Fibonnaci of ${theNumber} is ${theResult}. Calculated at: ${theDate} </li><hr>`;
+    }
 }
 
 
