@@ -8,6 +8,11 @@
     color: #999999;
 
 }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
 
 .title {
     font-family: Open Sans;
@@ -85,4 +90,35 @@
     line-height: 24px;
     color: #D9534F;
     margin-left: 8px;
+}
+.resultH {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 54px;
+    line-height: 72px;
+    color: #373A3C;
+    margin-left: 164px;
+    margin-top: 118px;
+}
+.spinnerPos {
+    margin-top: 63px;
+    margin-left: 10px;
+}
+.resultHistory {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 24px;
+    color: #373A3C;
+    margin-left: 164px;
+    margin-top: 38px;
+}
+.resultHistory hr {
+    width: 1088px;
+    height: 0px;
+    margin-left: 0px;
+    margin-top: 41px;
+    border: 1px solid #000000;
 }
