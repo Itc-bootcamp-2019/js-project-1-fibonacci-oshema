@@ -4,8 +4,11 @@ const url = 'http://localhost:5050/fibonacci/:number';
 const urlResults = 'http://localhost:5050/getFibonacciResults';
 let urlWithNumber;
 let serverResult;
+let sortSelected;
 
 window.onload = resultsHistory(urlResults);
+
+document.getElementById("myButton").addEventListener("click", getFibonacci);
 
 function getFibonacci() {
     inputVal = document.getElementById("myInput").value;
@@ -27,24 +30,19 @@ function getFibonacci() {
         }
     }
     resultsHistory(urlResults);
-
 }
 
 function ServerFibonacci(numIn) {
     urlWithNumber = url.replace(":number", numIn);
-    console.log(urlWithNumber);
     removeClass42();
     removeAlert();
     getServerResult(urlWithNumber);
 }
 
-
-async function getServerResult(x) {
-    let resp = await fetch(x);
+async function getServerResult(urlForFib) {
+    let resp = await fetch(urlForFib);
     if (resp.ok) {
         data = await resp.json();
-        console.log(data);
-        console.log(data.result);
         serverResult = data.result;
         document.getElementById("result").innerText = serverResult;
     } else {
@@ -55,19 +53,69 @@ async function getServerResult(x) {
     removeSpinner('mySpinner');
 }
 
-async function resultsHistory(y) {
+document.getElementById("sort").addEventListener(onselect, getSort);
+
+function getSort() {
+    sortSelected = document.getElementById("sort").value;
+    resultsHistory(urlResults);
+}
+
+async function resultsHistory(urlHistory) {
     document.getElementById('resultHistory').innerHTML = "";
     startSpinner('spinnerResults');
-    resp = await fetch(y)
+    resp = await fetch(urlHistory)
     data = await resp.json();
-    console.log(data.results);
     removeSpinner('spinnerResults');
+
+    if (sortSelected === "NumA") {
+        sortNumberAsc(data.results);
+    }
+    else if (sortSelected === "NumD") {
+        sortNumberDes(data.results);
+    }
+    else if (sortSelected === "DateA") {
+        sortDateAsc(data.results);
+
+    }
+    else if (sortSelected === "DateD") {
+        sortDateDes(data.results);
+
+    }
+    let ulList = document.getElementById('resultHistory');
+    let fregment = document.createDocumentFragment();
+
     for (let i of data.results) {
         theNumber = i.number;
         theResult = i.result;
         theDate = new Date(i.createdDate);
-        document.getElementById('resultHistory').innerHTML += `<br/><li>The Fibonnaci of ${theNumber} is ${theResult}. Calculated at: ${theDate} </li><hr>`;
+        let oneResult = document.createElement("li");
+        let line = document.createElement("hr");
+        oneResult.innerText = `The Fibonnaci of ${theNumber} is ${theResult}. Calculated at: ${theDate}`;
+        fregment.appendChild(oneResult);
+        fregment.appendChild(line);
     }
+    ulList.appendChild(fregment);
+}
+
+function sortNumberAsc(resultHistoryList) {
+    resultHistoryList.sort(function (a, b) {
+        return a.number - b.number;
+    })
+}
+function sortNumberDes(resultHistoryList) {
+    resultHistoryList.sort(function (a, b) {
+        return b.number - a.number;
+    })
+}
+function sortDateAsc(resultHistoryList) {
+    resultHistoryList.sort(function (a, b) {
+        return a.createdDate - b.createdDate;
+    })
+}
+function sortDateDes(resultHistoryList) {
+    resultHistoryList.sort(function (a, b) {
+        return b.createdDate - a.createdDate;
+    })
 }
 
 function startSpinner(idName) {
@@ -100,16 +148,16 @@ function localFibonacci(numIn) {
     removeAlert();
     let num0 = 0;
     let num1 = 1;
-    let y = 1;
+    let fibResult = 1;
     if (numIn == 42) {
         document.getElementById('result').className = 'class42';
-        y = "42 is the meaning of life";
+        fibResult = "42 is the meaning of life";
     } else {
         for (let i = 1; i < numIn; i++) {
-            num1 = y;
-            y = num1 + num0;
+            num1 = fibResult;
+            fibResult = num1 + num0;
             num0 = num1;
         }
     }
-    document.getElementById("result").innerText = y;
+    document.getElementById("result").innerText = fibResult;
 }
